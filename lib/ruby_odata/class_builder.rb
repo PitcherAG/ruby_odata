@@ -25,13 +25,6 @@ module OData
       # need the class name to build class
       return nil    if @klass_name.nil?
 
-      # return if we can find constant corresponding to class name
-      already_defined = eval("defined?(#{@klass_name}) == 'constant' and #{@klass_name}.class == Class")
-      if already_defined
-        @klass = @klass_name.constantize
-        return @klass
-      end
-
       if @namespace
         namespaces = @namespace.split(/\.|::/)
 
